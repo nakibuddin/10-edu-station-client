@@ -1,9 +1,23 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Navbar.css'
 import Logo from './../../images/logo.png'
+import { AuthContext } from '../../context/UserContext';
 
 const Navbar = () => {
+    const {user, logOut} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const goToLogIn = () => {
+        navigate('/login');
+    }
+
+    const handleLogOut = () => {
+        logOut()
+        .then(() => {})
+        .catch(error => console.error('my_error: ', error));
+    }
+
     return (
         <div className='my_navbar'>            
 
@@ -21,10 +35,23 @@ const Navbar = () => {
             </div>
             
             <div className='item_3 display_flex extra_sm'>
-                <span>Nakib Uddin Ahmad</span>
-                <NavLink className={ ({isActive}) => isActive ? undefined : undefined } to='na'><img src={"https://media-exp2.licdn.com/dms/image/C4E03AQFdlPe5MVvRqg/profile-displayphoto-shrink_200_200/0/1568338214983?e=2147483647&v=beta&t=z8GXqtxkYD5QZZGpBKX4nyJp44mICeVkf76h6s5QlSQ"} alt="" /></NavLink>
-                <NavLink className='active' to='/login'>Log in</NavLink>                
-                <NavLink className='active' to='/register'>Register</NavLink>                
+
+                <div className='d-flex flex-row-reverse align-items-center'>
+                    {
+                        user?.uid && 
+                        <>                                                                 
+                            <img className='my_border' src={user?.photoURL} alt="" />                                              
+                            <span className='displayName'>{user?.displayName}</span>  
+                        </>                      
+                    }
+                </div>
+
+                {
+                    user?.uid ?                                              
+                    <button onClick={handleLogOut} >Log out</button>                                                         
+                    :
+                    <button onClick={goToLogIn}>Log in</button>
+                }                                            
             </div>
 
         </div>

@@ -6,12 +6,24 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/UserContext';
+
 
 const Login = () => {
+    const {user, LogInWithGoogle} = useContext(AuthContext);
+
     const success = 'success';
     const handleRegister = () => {        
     }
     const passwordError = 'password Error';
+
+    const handleGoogleLogIn = () => {
+        LogInWithGoogle()
+        .then(result => console.log(result.user))
+        .catch(error => console.error('my_error: ', error));
+    }
+
     return (
         <div className='display_grid'>
             <div className='w-75 mx-auto'>                
@@ -47,11 +59,16 @@ const Login = () => {
                         {/* <p className='mt-3'><small>Don’t have a account? <Link to='/register'>Register now</Link></small></p> */}
                         <p className='mt-3 fw-semibold'><small>Don’t have a account? <Link to='/register'>Create an account</Link></small></p>
 
-                        <button type="button" className="btn btn-outline-primary w-75 mt-3 mb-3">Continue with google</button> <br/>
+                        <button type="button" onClick={handleGoogleLogIn} className="btn btn-outline-primary w-75 mt-3 mb-3">Continue with google</button> <br/>
                         <button type="button" className="btn btn-outline-dark w-75">Continue with github</button>
                     </div>
                     
                 </div>
+                {
+                    user?.uid && <div>
+                        <p>Name: {user.displayName}</p>
+                        <img src={user.photoURL} alt="" /> </div>
+                }
             </div>
         </div>
     );
