@@ -11,7 +11,7 @@ import { AuthContext } from '../../context/UserContext';
 
 
 const Login = () => {
-    const {user, LogInWithGoogle} = useContext(AuthContext);
+    const {user, LogInWithGoogle, LogInWithGithub} = useContext(AuthContext);
 
     const success = 'success';
     const handleRegister = () => {        
@@ -20,6 +20,11 @@ const Login = () => {
 
     const handleGoogleLogIn = () => {
         LogInWithGoogle()
+        .then(result => console.log(result.user))
+        .catch(error => console.error('my_error: ', error));
+    }
+    const handleGithubLogIn = () => {
+        LogInWithGithub()
         .then(result => console.log(result.user))
         .catch(error => console.error('my_error: ', error));
     }
@@ -60,7 +65,7 @@ const Login = () => {
                         <p className='mt-3 fw-semibold'><small>Don’t have a account? <Link to='/register'>Create an account</Link></small></p>
 
                         <button type="button" onClick={handleGoogleLogIn} className="btn btn-outline-primary w-75 mt-3 mb-3">Continue with google</button> <br/>
-                        <button type="button" className="btn btn-outline-dark w-75">Continue with github</button>
+                        <button type="button" onClick={handleGithubLogIn} className="btn btn-outline-dark w-75">Continue with github</button>
                     </div>
                     
                 </div>
