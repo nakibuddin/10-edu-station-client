@@ -6,12 +6,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/UserContext';
 
 
 const Login = () => {
-    const {logIn, LogInWithGoogle, LogInWithGithub} = useContext(AuthContext);    
+    const {logIn, LogInWithGoogle, LogInWithGithub, setLoading} = useContext(AuthContext);    
+    const [loginError, setLoginError] = useState('');
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -46,8 +47,13 @@ const Login = () => {
         .then(result => {
             console.log(result.user);
             navigate(from, {replace: true});
+            setLoginError('');
         })
-        .catch(error => console.error('my_email_login_error: ', error));
+        .catch(error => {            
+            console.error('my_github_login_error: ', error);
+            setLoading(false);
+            setLoginError(error.message);
+        });
     }
 
     return (
@@ -71,6 +77,8 @@ const Login = () => {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" name="password" placeholder="Password" required/>
                         </Form.Group>
+                        
+                        <p className='text-danger'>{loginError}</p>
                         
                         <div className='text-center mt-4'>
                             <Button variant="primary w-75" type="submit">

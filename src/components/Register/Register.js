@@ -1,15 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Register.css';
 import Registration_img from './../../images/registration.PNG'
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 
 const Register = () => {
     const {createUser, LogInWithGoogle, LogInWithGithub} = useContext(AuthContext);
+    const [registerError, setRegisterError] = useState('');
 
     const handleRegister = event => {
         event.preventDefault();
@@ -24,8 +25,13 @@ const Register = () => {
         .then(result => {
             console.log(result.user);
             event.target.reset();
+            Navigate('/');
+            setRegisterError('');
         })
-        .catch(error => console.error('my_error: ', error));
+        .catch(error => {
+            console.error('my_register_error: ', error);
+            setRegisterError(error.message);
+        });
     }
 
     const handleGoogleLogIn = () => {
@@ -70,6 +76,8 @@ const Register = () => {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" name="password" minLength="8" placeholder="Password" required/>
                         </Form.Group>
+
+                        <p className='text-danger'>{registerError}</p>
                         
                         <div className='text-center mt-4'>
                             <Button variant="primary w-75" type="submit">

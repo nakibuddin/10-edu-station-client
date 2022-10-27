@@ -9,14 +9,19 @@ const Courses = () => {
 
 
     return (        
-        <div>            
-            <br/><br/>
-            <div className="courses">
+        <div className='main_container'>            
+            
+        
+            <div className='courses_container'>
                 {
                     courses.map(course => <Course key={course.id} course={course}></Course>)
                 }
             </div>
-            <br/><br/><br/>
+            
+            <div className='side_bar_container'>
+                <h2>This is a side bar</h2>
+            </div>            
+            
 
         </div>
     );
