@@ -13,16 +13,25 @@ import { AuthContext } from '../../context/UserContext';
 const Login = () => {
     const {logIn, LogInWithGoogle, LogInWithGithub} = useContext(AuthContext);    
 
-    
+    const navigate = useNavigate();
+    const location = useLocation();
+    // console.log('From login page: ', location);
+    const from = location.state?.from?.pathname || '/';
 
     const handleGoogleLogIn = () => {
         LogInWithGoogle()
-        .then(result => console.log(result.user))
+        .then(result => {
+            console.log(result.user);
+            navigate(from, {replace: true});
+        })
         .catch(error => console.error('my_error: ', error));
     }
     const handleGithubLogIn = () => {
         LogInWithGithub()
-        .then(result => console.log(result.user))
+        .then(result => {
+            console.log(result.user);
+            navigate(from, {replace: true});
+        })
         .catch(error => console.error('my_error: ', error));
     }
 
@@ -34,7 +43,10 @@ const Login = () => {
         // console.log(email, password);
 
         logIn(email, password)
-        .then(result => console.log(result.user))
+        .then(result => {
+            console.log(result.user);
+            navigate(from, {replace: true});
+        })
         .catch(error => console.error('my_error: ', error));
     }
 
