@@ -5,18 +5,15 @@ import login_img from './../../images/login.PNG'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/UserContext';
 
 
 const Login = () => {
-    const {LogInWithGoogle, LogInWithGithub} = useContext(AuthContext);
+    const {logIn, LogInWithGoogle, LogInWithGithub} = useContext(AuthContext);    
 
-    const success = 'success';
-    const handleRegister = () => {        
-    }
-    const passwordError = 'password Error';
+    
 
     const handleGoogleLogIn = () => {
         LogInWithGoogle()
@@ -25,6 +22,18 @@ const Login = () => {
     }
     const handleGithubLogIn = () => {
         LogInWithGithub()
+        .then(result => console.log(result.user))
+        .catch(error => console.error('my_error: ', error));
+    }
+
+    const handleLogIn = event => {
+        event.preventDefault();
+        const form = event.target;        
+        const email = form.email.value;
+        const password = form.password.value;
+        // console.log(email, password);
+
+        logIn(email, password)
         .then(result => console.log(result.user))
         .catch(error => console.error('my_error: ', error));
     }
@@ -40,15 +49,15 @@ const Login = () => {
                     <h3 className='mb-4 my_color'>Good to see you again!</h3>
 
 
-                    <Form onSubmit={handleRegister}>                    
+                    <Form onSubmit={handleLogIn}>                    
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" name="my_email" placeholder="Email" required/>                    
+                            <Form.Control type="email" name="email" placeholder="Email" required/>                    
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" name="my_password" placeholder="Password" required/>
+                            <Form.Control type="password" name="password" placeholder="Password" required/>
                         </Form.Group>
                         
                         <div className='text-center mt-4'>

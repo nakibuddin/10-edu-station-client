@@ -19,7 +19,7 @@ const UserContext = ({children}) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const signIn = (email, password) => {
+    const logIn = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
@@ -50,7 +50,7 @@ const UserContext = ({children}) => {
 
     } ,[])
 
-    const authInfo = {user, loading, createUser, signIn, logOut, LogInWithGoogle, LogInWithGithub};
+    const authInfo = {user, loading, createUser, logIn, logOut, LogInWithGoogle, LogInWithGithub};
 
     return (
         <AuthContext.Provider value={authInfo}>

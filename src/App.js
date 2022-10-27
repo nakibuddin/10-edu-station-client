@@ -6,6 +6,7 @@ import PageNotFound from './components/PageNotFound/PageNotFound';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Courses from './components/Courses/Courses';
+import PrivateRoutes from './routes/PrivateRoutes';
 
 
 const my_router = createBrowserRouter([
@@ -13,7 +14,7 @@ const my_router = createBrowserRouter([
         {path: '/home', element: <>This is home</>},
         {path: 'login', element: <Login></Login>},
         {path: 'register', element: <Register></Register>},
-        {path: '/courses', element: <Courses></Courses>},
+        {path: '/courses', element: <PrivateRoutes><Courses></Courses></PrivateRoutes>},
         {path: '*', element: <PageNotFound></PageNotFound>},
 
     ]}

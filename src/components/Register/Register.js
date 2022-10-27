@@ -25,7 +25,7 @@ const Register = () => {
             console.log(result.user);
             event.target.reset();
         })
-        .catch(error => console.error('error: ', error));
+        .catch(error => console.error('my_error: ', error));
     }
 
     const handleGoogleLogIn = () => {
