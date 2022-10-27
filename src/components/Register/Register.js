@@ -31,12 +31,12 @@ const Register = () => {
     const handleGoogleLogIn = () => {
         LogInWithGoogle()
         .then(result => console.log(result.user))
-        .catch(error => console.error('my_error: ', error));
+        .catch(error => console.error('my_google_login_error: ', error));
     }
     const handleGithubLogIn = () => {
         LogInWithGithub()
         .then(result => console.log(result.user))
-        .catch(error => console.error('my_error: ', error));
+        .catch(error => console.error('my_github_login_error: ', error));
     }
 
     return (

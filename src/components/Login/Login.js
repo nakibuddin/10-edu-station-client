@@ -24,7 +24,7 @@ const Login = () => {
             console.log(result.user);
             navigate(from, {replace: true});
         })
-        .catch(error => console.error('my_error: ', error));
+        .catch(error => console.error('my_google_login_error: ', error));
     }
     const handleGithubLogIn = () => {
         LogInWithGithub()
@@ -32,7 +32,7 @@ const Login = () => {
             console.log(result.user);
             navigate(from, {replace: true});
         })
-        .catch(error => console.error('my_error: ', error));
+        .catch(error => console.error('my_github_login_error: ', error));
     }
 
     const handleLogIn = event => {
@@ -47,7 +47,7 @@ const Login = () => {
             console.log(result.user);
             navigate(from, {replace: true});
         })
-        .catch(error => console.error('my_error: ', error));
+        .catch(error => console.error('my_email_login_error: ', error));
     }
 
     return (

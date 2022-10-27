@@ -17,6 +17,10 @@ const Navbar = () => {
         .then(() => {})
         .catch(error => console.error('my_error: ', error));
     }
+    
+    const showProfile = () => {
+        navigate('/login');
+    }
 
     return (
         <div className='my_navbar'>            
@@ -40,7 +44,7 @@ const Navbar = () => {
                     {
                         user?.uid && 
                         <>                                                                 
-                            <img className='my_border' src={user?.photoURL} alt="" />                                              
+                            <img onClick={showProfile} className='my_border' src={user?.photoURL} alt="" />                                              
                             <span className='displayName'>{user?.displayName}</span>  
                         </>                      
                     }
