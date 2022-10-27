@@ -8,6 +8,7 @@ import Register from './components/Register/Register';
 import Courses from './components/Courses/Courses';
 import PrivateRoutes from './routes/PrivateRoutes';
 import Blog from './components/Blog/Blog';
+import FAQ from './components/FAQ/FAQ';
 
 
 const my_router = createBrowserRouter([
@@ -20,7 +21,8 @@ const my_router = createBrowserRouter([
         loader: async () => fetch('http://localhost:5000/courses'),
         element: <PrivateRoutes><Courses></Courses></PrivateRoutes>},
 
-        {path: '/blog', element: <Blog></Blog>},        
+        {path: '/blog', element: <Blog></Blog>},   
+        {path: '/faq', element: <FAQ></FAQ>},     
 
         {path: '*', element: <PageNotFound></PageNotFound>},
 

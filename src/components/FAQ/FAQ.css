@@ -1,0 +1,15 @@
+.faq h1 {
+    text-align: center;
+    margin: 30px 5% 50px 5%;
+    /* color: #5D5FEF; */
+}
+
+.faq_accordion {
+    text-align: left;        
+    margin: 5px 5% 0 5%;
+    
+    border: 1px solid  #cfd0e6 ;        
+    border-radius: 10px;    
+    box-shadow: 5px 5px 5px rgb(235, 233, 233);
+    padding: 30px;      
+}
