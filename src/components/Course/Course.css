@@ -1,0 +1,32 @@
+.course {    
+    text-align: center;
+    border: 1px solid  #d9daeb;
+    border-radius: 10px;    
+    box-shadow: 5px 5px 5px rgb(235, 233, 233);
+    padding: 5px;    
+}
+.course img {
+    width: 100%;    
+    height: 250px;    
+    /* border-top-left-radius: 15px;
+    border-top-right-radius: 15px; */
+    border-radius: 5px;
+    background-color: #d9daeb;
+}
+.course h3,h5 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.course button {
+    width: 80%;    
+    margin: 15px 10% 25px 10%;
+    padding: 8px 0 8px 0;
+    border-radius: 10px;
+    
+    font-size: 15px;
+    background-color: #5D5FEF;
+    color: white;
+    border: none;
+    cursor: pointer;    
+}
+

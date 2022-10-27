@@ -14,7 +14,11 @@ const my_router = createBrowserRouter([
         {path: '/home', element: <>This is home</>},
         {path: 'login', element: <Login></Login>},
         {path: 'register', element: <Register></Register>},
-        {path: '/courses', element: <PrivateRoutes><Courses></Courses></PrivateRoutes>},
+
+        {path: '/courses',        
+        loader: async () => fetch('http://localhost:5000/courses'),
+        element: <PrivateRoutes><Courses></Courses></PrivateRoutes>},
+
         {path: '*', element: <PageNotFound></PageNotFound>},
 
     ]}
@@ -29,3 +33,8 @@ function App() {
 }
 
 export default App;
+
+
+// loader: async () => fetch('https://jsonplaceholder.typicode.com/users'),
+// loader: async () => fetch('http://localhost:5000'),
+// loader: async () => fetch('https://10-edu-station-server.vercel.app/'),
