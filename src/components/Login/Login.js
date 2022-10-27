@@ -11,7 +11,7 @@ import { AuthContext } from '../../context/UserContext';
 
 
 const Login = () => {
-    const {user, LogInWithGoogle, LogInWithGithub} = useContext(AuthContext);
+    const {LogInWithGoogle, LogInWithGithub} = useContext(AuthContext);
 
     const success = 'success';
     const handleRegister = () => {        
@@ -43,7 +43,7 @@ const Login = () => {
                     <Form onSubmit={handleRegister}>                    
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" name="my_email" placeholder="Enter email" required/>                    
+                            <Form.Control type="email" name="my_email" placeholder="Email" required/>                    
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -68,12 +68,7 @@ const Login = () => {
                         <button type="button" onClick={handleGithubLogIn} className="btn btn-outline-dark w-75">Continue with github</button>
                     </div>
                     
-                </div>
-                {
-                    user?.uid && <div>
-                        <p>Name: {user.displayName}</p>
-                        <img src={user.photoURL} alt="" /> </div>
-                }
+                </div>                
             </div>
         </div>
     );
