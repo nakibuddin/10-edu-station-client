@@ -33,7 +33,7 @@ const Navbar = () => {
             <div className='item_2 display_flex extra_sm'>                
                     <NavLink to='/home'>Home</NavLink>
                     <NavLink to='/courses'>Courses</NavLink>              
-                    <NavLink to='/quiz'>Quiz</NavLink>              
+                    {/* <NavLink to='/quiz'>Quiz</NavLink>               */}
                     <NavLink to='/blog'>Blog</NavLink>
                     <NavLink to='/faq'>FAQ</NavLink>              
             </div>

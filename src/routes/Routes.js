@@ -10,6 +10,8 @@ import FAQ from './../components/FAQ/FAQ';
 import PageNotFound from './../components/PageNotFound/PageNotFound';
 import CourseDetails from './../components/Courses/CourseDetails/CourseDetails';
 import Quiz from '../components/Courses/Quiz/Quiz';
+import Checkout from '../components/Courses/Checkout/Checkout';
+import ProceedNext from '../components/Courses/ProceedNext/ProceedNext';
 
 
 export const my_router = createBrowserRouter([
@@ -19,22 +21,29 @@ export const my_router = createBrowserRouter([
         {path: 'register', element: <Register></Register>},
 
         {path: '/courses',        
-        loader: async () => fetch('http://localhost:5000/courses'),
+        loader: async () => fetch('https://10-edu-station-server.vercel.app/courses'),
         element: <Courses></Courses>
         },
 
         {path: '/course/:id',        
-        loader: async ({params}) => fetch(`http://localhost:5000/course/${params.id}`),
+        loader: async ({params}) => fetch(`https://10-edu-station-server.vercel.app/course/${params.id}`),
         element: <CourseDetails></CourseDetails>
         },
 
+        {path: '/course/checkout/:id',        
+        loader: async ({params}) => fetch(`https://10-edu-station-server.vercel.app/course/checkout/${params.id}`),
+        element: <Checkout></Checkout>
+        },
+
+
         {path: '/course/quiz/:variable',        
-        loader: async ({params}) => fetch(`http://localhost:5000/course/quiz/${params.variable}`),
+        loader: async ({params}) => fetch(`https://10-edu-station-server.vercel.app/course/quiz/${params.variable}`),
         element: <PrivateRoutes><Quiz></Quiz></PrivateRoutes>
         },
 
         {path: '/blog', element: <Blog></Blog>},   
         {path: '/faq', element: <FAQ></FAQ>},     
+        {path: '/course/checkout/proceed-next', element: <ProceedNext></ProceedNext>},
 
         {path: '*', element: <PageNotFound></PageNotFound>},
 

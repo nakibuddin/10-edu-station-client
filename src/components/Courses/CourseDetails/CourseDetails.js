@@ -18,6 +18,7 @@ const CourseDetails = () => {
     const courses = obj?.data;
     // console.log(obj);
 //align-items-center
+
     return (
         <div className='c_details_main_container'>     
 
@@ -36,7 +37,9 @@ const CourseDetails = () => {
                         <h6><b>Name:</b> Rohim Uddin </h6>
                         <h6 className='mb-3'><b>Experience:</b> 6 year practical experience on this field</h6>
                         {/* <br /><br /><br /> <br /><br /><br /> <br /><br /><br /><br /><br /><br /> */}
-                        <Link to={`/course/${course.id}`}> <button type="button" className="btn btn-outline-primary">Proceed to checkout</button> </Link>
+                        {/* <button type="button" className="btn btn-outline-primary">Proceed to checkout</button> */}
+                        {/* <Link to={`/course/${course.id}`}> <button type="button" className="btn btn-outline-primary">Proceed to checkout</button> </Link> */}                        
+                        <Link to={`/course/checkout/${course.id}`}> <button type="button" className="btn btn-outline-primary">Proceed to checkout</button> </Link>                        
                         
                     </div>
                 </div>

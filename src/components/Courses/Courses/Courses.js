@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import './Courses.css'
 import { useLoaderData } from 'react-router-dom';
 import Course from './../Course/Course';
 import SideBar from '../SideBar/SideBar';
+
+export const CoursesContext = createContext();
 
 const Courses = () => {
     const {data} = useLoaderData();     
     const courses = data;    
 
 
-    return (        
+    return ( 
+        <CoursesContext.Provider value={courses}>
+
         <div className='main_container'>            
             
         
@@ -23,8 +27,9 @@ const Courses = () => {
                 <SideBar courses={courses}></SideBar>                                
             </div>            
             
-
         </div>
+
+        </CoursesContext.Provider>       
     );
 };
 
