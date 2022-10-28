@@ -33,9 +33,9 @@ const CourseDetails = () => {
 
                         
                         <h5 className='mt-4'> <b>Instructor details</b> </h5>
-                        <img className='instructor_img' src={course?.logo} alt="" />
-                        <h6><b>Name:</b> Rohim Uddin </h6>
-                        <h6 className='mb-3'><b>Experience:</b> 6 year practical experience on this field</h6>
+                        <img className='instructor_img' src={course?.instructor_img} alt="" />
+                        <h6><b>Name:</b> {course?.instructor_name} </h6>
+                        <h6 className='mb-3'><b>Experience:</b> {course?.instructor_experience} year practical experience on this field.</h6>
                         {/* <br /><br /><br /> <br /><br /><br /> <br /><br /><br /><br /><br /><br /> */}
                         {/* <button type="button" className="btn btn-outline-primary">Proceed to checkout</button> */}
                         {/* <Link to={`/course/${course.id}`}> <button type="button" className="btn btn-outline-primary">Proceed to checkout</button> </Link> */}                        
@@ -44,7 +44,7 @@ const CourseDetails = () => {
                     </div>
                 </div>
 
-                <h5 className='fw-semibold mb-3'>You can take a short quiz to test your knowledge level at this moment. Don't worry if you don't score well on this quiz. If you complete this course, you will know much more than that.</h5>
+                <h5 className='fw-semibold mb-3'>You can take a short quiz to test your knowledge level at this moment. Don't worry if you don't score well on this quiz, you will learn much more than that If you complete this course.</h5>
 
                 <Link to={`/course/quiz/${course.name}`}><button type="button" className="btn btn-outline-primary px-5">Start quiz</button></Link>
             </div>

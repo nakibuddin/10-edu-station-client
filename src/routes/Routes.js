@@ -32,13 +32,13 @@ export const my_router = createBrowserRouter([
 
         {path: '/course/checkout/:id',        
         loader: async ({params}) => fetch(`https://10-edu-station-server.vercel.app/course/checkout/${params.id}`),
-        element: <Checkout></Checkout>
+        element: <PrivateRoutes><Checkout></Checkout></PrivateRoutes>
         },
 
 
         {path: '/course/quiz/:variable',        
         loader: async ({params}) => fetch(`https://10-edu-station-server.vercel.app/course/quiz/${params.variable}`),
-        element: <PrivateRoutes><Quiz></Quiz></PrivateRoutes>
+        element: <Quiz></Quiz>
         },
 
         {path: '/blog', element: <Blog></Blog>},   
