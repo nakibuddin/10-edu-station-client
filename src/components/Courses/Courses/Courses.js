@@ -2,6 +2,7 @@ import React from 'react';
 import './Courses.css'
 import { useLoaderData } from 'react-router-dom';
 import Course from './../Course/Course';
+import SideBar from '../SideBar/SideBar';
 
 const Courses = () => {
     const {data} = useLoaderData();     
@@ -19,7 +20,7 @@ const Courses = () => {
             </div>
             
             <div className='side_bar_container'>
-                <h2>This is a side bar</h2>
+                <SideBar courses={courses}></SideBar>                                
             </div>            
             
 

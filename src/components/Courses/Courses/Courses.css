@@ -12,7 +12,7 @@
     gap: 3%;      
 }
 
-.side_bar_container {
+.main_container .side_bar_container {
     border: 1px solid  #cfd0e6 ;      
     border-radius: 10px;    
     box-shadow: 5px 5px 5px rgb(235, 233, 233);
